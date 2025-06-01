@@ -1,0 +1,58 @@
+/* src/styles/CreateCustomer.css */
+
+.form-section {
+    max-width: 700px;
+    margin: 2rem auto;
+    background-color: var(--neutral-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.form-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background-color: white;
+}
+
+.submit-button {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    align-self: flex-end;
+    transition: background-color 0.2s ease;
+}
+
+.submit-button:hover {
+    background-color: #155ab6;
+}

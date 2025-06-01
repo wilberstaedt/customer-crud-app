@@ -12,7 +12,9 @@
   "dependencies": {
     "@fastify/cors": "^8.0.0",
     "@prisma/client": "^6.8.2",
-    "fastify": "^4.0.0"
+    "bcryptjs": "^3.0.2",
+    "fastify": "^4.0.0",
+    "zod": "^3.25.45"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

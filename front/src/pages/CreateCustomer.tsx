@@ -1,17 +1,17 @@
 import React from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { CustomerTable } from '../components/CustomerTable';
+import { CreateCustomerPage } from '../components/CreateCustomer';
 import '../styles/Global.css';
 
-const Home = () => (
+const CreateCustomer = () => (
   <>
     <Header />
     <main>
-      <CustomerTable />
+      <CreateCustomerPage />
     </main>
     <Footer />
   </>
 );
 
-export default Home;
+export default CreateCustomer;

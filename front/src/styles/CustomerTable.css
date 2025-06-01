@@ -1,0 +1,101 @@
+.customer-table {
+    width: 90%;
+    margin: 2rem auto;
+    border-collapse: collapse;
+}
+
+.customer-table th,
+.customer-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.customer-table th {
+    background-color: #f4f4f4;
+}
+
+.customer-table tr:hover {
+    background-color: #f0f0f0;
+}
+
+.customer-table td {
+    font-size: 0.95rem;
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-input,
+.filter-select {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    min-width: 160px;
+}
+
+.filter-button {
+    padding: 0.5rem 1rem;
+    background-color: #000;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.filter-button:hover {
+    background-color: #333;
+}
+
+.filters-container.modern-filters {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    background-color: #f9f9f9;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.modern-input,
+.modern-select {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    min-width: 180px;
+    transition: all 0.3s ease;
+}
+
+.modern-input:focus,
+.modern-select:focus {
+    border-color: #111;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08);
+}
+
+.modern-button {
+    padding: 0.6rem 1.2rem;
+    background-color: #111;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modern-button:hover {
+    background-color: #333;
+}

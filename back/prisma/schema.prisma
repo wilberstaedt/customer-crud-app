@@ -11,4 +11,77 @@ model HealthLog {
   id        String   @id @default(uuid())
   status    String
   createdAt DateTime @default(now())
+
+  @@map("health_logs")
+}
+
+enum CustomerType {
+  INDIVIDUAL // Pessoa Física
+  ORGANIZATION // Pessoa Jurídica
+}
+
+enum CustomerStatus {
+  ACTIVE
+  INACTIVE
+  BLOCKED
+}
+
+model Customer {
+  id        String         @id @default(uuid())
+  profileId String         @unique
+  type      CustomerType
+  status    CustomerStatus
+  hasLogin  Boolean        @default(false)
+  loginId   String?        @unique
+  notes     String?
+  createdAt DateTime       @default(now())
+  profile   Profile        @relation(fields: [profileId], references: [id])
+  login     Login?         @relation(fields: [loginId], references: [id])
+
+  @@map("customers")
+}
+
+model Login {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  password  String
+  lastLogin DateTime?
+  customer  Customer?
+
+  @@map("logins")
+}
+
+model Profile {
+  id        String    @id @default(uuid())
+  firstName String
+  lastName  String
+  email     String
+  gender    String?
+  phone     String?
+  birthDate DateTime?
+  document  String? // CPF ou CNPJ, dependendo do tipo
+  addresses Address[]
+  customer  Customer?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@map("profiles")
+}
+
+model Address {
+  id         String  @id @default(uuid())
+  profileId  String
+  street     String
+  number     String
+  complement String?
+  suburb     String
+  city       String
+  state      String
+  country    String
+  postCode   String
+  isMain     Boolean @default(false)
+  isActive   Boolean @default(true)
+  profile    Profile @relation(fields: [profileId], references: [id])
+
+  @@map("addresses")
 }
