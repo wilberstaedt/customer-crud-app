@@ -4,9 +4,8 @@ import { CreateAddressDTO } from './types';
 export async function createAddress(data: CreateAddressDTO) {
     return await prisma.$transaction(async (tx) => {
 
-        const customer = await prisma.customer.findUnique({
+        const customer = await prisma.profile.findUnique({
             where: { id: data.profileId },
-            include: { profile: true },
         });
 
         if (!customer) {

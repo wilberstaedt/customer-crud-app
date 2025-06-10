@@ -12,6 +12,7 @@ export const CreateCustomerSchema = z.object({
         phone: z.string().optional(),
         birthDate: z.string().optional(),
         document: z.string().optional(),
+        hasLogin: z.boolean().optional()
     }),
 });
 

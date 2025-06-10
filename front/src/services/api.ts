@@ -14,3 +14,33 @@ export const getCustomers = async (filters: {
     });
     return res.data;
 };
+
+export const createCustomer = async (data: {
+  profile: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    gender?: string;
+    phone?: string;
+    birthDate?: string;
+    document: string;
+    hasLogin?: boolean;
+  }
+  type: 'INDIVIDUAL' | 'ORGANIZATION';
+  status: 'ACTIVE' | 'INACTIVE' | 'BLOCKED';
+  notes?: string;
+  password?: string;
+  address?: {
+    street?: string;
+    number?: string;
+    complement?: string;
+    suburb?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    postCode?: string;
+  };
+}) => {
+  const res = await api.post('/customers', data);
+  return res.data;
+};

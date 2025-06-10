@@ -1,23 +1,37 @@
-import { prisma } from '../../lib/prisma'
+import { prisma } from '../../lib/prisma';
 import { CreateCustomerDTO } from './types';
 
 export async function createCustomer(data: CreateCustomerDTO) {
-    console.log('chegou no usecase')
+    const { hasLogin, ...profileWithoutHasLogin } = data.profile;
+
+    const cleanedProfile = {
+        ...profileWithoutHasLogin,
+        birthDate: profileWithoutHasLogin.birthDate?.trim()
+            ? new Date(profileWithoutHasLogin.birthDate)
+            : undefined,
+        gender: profileWithoutHasLogin.gender?.trim() || undefined,
+        phone: profileWithoutHasLogin.phone?.trim() || undefined,
+        document: profileWithoutHasLogin.document?.trim() || undefined,
+    };
+
     return await prisma.$transaction(async (tx) => {
         const createdProfile = await tx.profile.create({
-            data: data.profile,
+            data: cleanedProfile,
         });
 
-        const customer = await tx.customer.create({
+        const createdCustomer = await tx.customer.create({
             data: {
-                profileId: createdProfile.id,
                 type: data.type,
                 status: data.status ?? 'ACTIVE',
-                hasLogin: false,
                 notes: data.notes,
+                hasLogin: data.profile.hasLogin,
+                profileId: createdProfile.id,
             },
         });
 
-        return customer;
+        return {
+            id: createdCustomer.id,
+            profileId: createdCustomer.profileId,
+        };
     });
 }
